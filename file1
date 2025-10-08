@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>David Tyrrell — Wildfire App | Portfolio</title>
+  <meta name="description" content="Portfolio website to showcase skills, photos, and videos for the Wildfire app." />
+  <meta name="color-scheme" content="dark light" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0c;
+      --surface: #141417;
+      --muted: #9aa0a6;
+      --text: #e9eaee;
+      --brand1: #ff7a18; /* ember */
+      --brand2: #af002d; /* cinder */
+      --brand3: #ffcf33; /* spark */
+      --ring: rgba(255, 122, 24, .35);
+      --card: #17181cdd;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(175,0,45,.15), transparent),
+                  radial-gradient(1000px 600px at -10% 10%, rgba(255,122,24,.08), transparent),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* --- Utility --- */
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    .pill { padding: .4rem .75rem; border-radius: 999px; background: #ffffff12; border: 1px solid #ffffff18; font-size: .85rem; color: #fff; }
+    .muted { color: var(--muted); }
+    .btn { display: inline-flex; align-items:center; gap:.6rem; padding:.85rem 1.1rem; border-radius: .9rem; border:1px solid #ffffff22; background: linear-gradient(180deg, #ffffff1a, #ffffff0a); backdrop-filter: blur(6px); cursor:pointer; transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -12px #000; border-color: #ffffff44; }
+    .btn.primary { background: linear-gradient(135deg, var(--brand1), var(--brand2)); border: none; }
+    .btn.ghost { background: transparent; border:1px solid #ffffff33; }
+    .grid { display: grid; gap: 1.2rem; }
+
+    /* --- Floating sparks background --- */
+    .spark {
+      position: absolute; inset: 0; pointer-events: none; z-index: -1; mask-image: radial-gradient(60% 60% at 50% 40%, black 40%, transparent 80%);
+    }
+    .spark .dot { position:absolute; width: 3px; height: 3px; background: radial-gradient(circle, var(--brand3), transparent 70%); border-radius:999px; opacity:.8; animation: floatUp linear infinite; }
+    @keyframes floatUp { to { transform: translateY(-120vh) translateX(var(--xdrift)); opacity: 0; } }
+
+    /* --- Header --- */
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); background: linear-gradient(180deg, #0b0b0caa, #0b0b0c33); border-bottom:1px solid #ffffff14; }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding: .9rem 0; }
+    .brand { display:flex; align-items:center; gap:.75rem; font-weight:800; letter-spacing:.3px; }
+    .logo { width: 30px; height: 30px; border-radius:7px; background: conic-gradient(from 210deg, var(--brand1), var(--brand3), var(--brand2)); box-shadow: 0 0 0 1px #ffffff22 inset; }
+    nav a { padding:.5rem .8rem; border-radius:.6rem; color: #cfd3dc; }
+    nav a:hover { background:#ffffff12; color:#fff; }
+
+    /* --- Hero --- */
+    .hero { padding: 8rem 0 5rem; position: relative; }
+    .headline { font-size: clamp(2rem, 4vw + 1rem, 3.3rem); font-weight: 800; letter-spacing:.2px; line-height:1.1; }
+    .gradient-text { background: linear-gradient(135deg, var(--brand3), var(--brand1), var(--brand2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .sub { max-width: 70ch; color: var(--muted); margin-top: 1rem; }
+    .cta { margin-top: 1.5rem; display:flex; gap:.8rem; flex-wrap: wrap; }
+
+    /* --- Sections --- */
+    section { padding: 4rem 0; }
+    .section-title { font-size: 1.8rem; margin: 0 0 1.2rem; letter-spacing:.3px; }
+    .section-hint { margin-bottom: 2rem; color: var(--muted); }
+
+    /* --- Skills --- */
+    .skills { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .card { background: var(--card); border: 1px solid #ffffff14; border-radius: 18px; padding: 1.1rem; box-shadow: 0 10px 30px -25px #000; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-4px); border-color: #ffffff2a; box-shadow: 0 20px 40px -30px #000; }
+    .card h3 { margin: .2rem 0 .6rem; }
+    .taglist { display:flex; flex-wrap:wrap; gap:.5rem; }
+    .tag { font-size:.85rem; padding:.35rem .6rem; border-radius: .6rem; background:#ffffff14; border:1px solid #ffffff22; }
+
+    /* --- Gallery --- */
+    .gallery { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+    .thumb { position: relative; border-radius: 16px; overflow: hidden; border:1px solid #ffffff1a; aspect-ratio: 4/3; background:#0f0f12; }
+    .thumb img { width:100%; height:100%; object-fit: cover; filter: saturate(1.08) contrast(1.02); transition: transform .5s ease; }
+    .thumb:hover img { transform: scale(1.06); }
+    .thumb .cap { position:absolute; inset:auto 0 0; padding:.7rem; background: linear-gradient(180deg, transparent, #00000080); font-size:.9rem; }
+
+    /* --- Video Grid --- */
+    .videos { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .vid { position:relative; border-radius: 16px; overflow: hidden; border:1px solid #ffffff1a; background:#0f0f12; aspect-ratio: 16/9; }
+    .vid iframe, .vid video { width:100%; height:100%; display:block; }
+
+    /* --- Wildfire App Feature strip --- */
+    .features { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1.1rem; }
+    .feature { background: linear-gradient(180deg, #ffffff10, #ffffff08); border:1px solid #ffffff18; border-radius: 16px; padding: 1rem; }
+    .feature h4 { margin:.2rem 0 .4rem; }
+
+    /* --- Footer --- */
+    footer { padding: 4rem 0 5rem; color: var(--muted); border-top:1px solid #ffffff14; background: linear-gradient(180deg,#0b0b0c44, transparent); }
+    .socials { display:flex; gap:.7rem; flex-wrap:wrap; }
+
+    /* --- Reveal on scroll --- */
+    .reveal { opacity: 0; transform: translateY(14px) scale(.98); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* --- Responsive tweaks --- */
+    @media (max-width: 640px) {
+      .hero { padding-top: 6rem; }
+      .cta { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+  <!-- floating sparks -->
+  <div class="spark" aria-hidden="true" id="spark"></div>
+
+  <header>
+    <div class="container nav">
+      <div class="brand"><div class="logo"></div> David Tyrrell</div>
+      <nav>
+        <a href="#skills">Skills</a>
+        <a href="#wildfire">Wildfire App</a>
+        <a href="#photos">Photos</a>
+        <a href="#videos">Videos</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero container">
+      <span class="pill">🚒 Wildfire • Mobile + Swift • Android</span>
+      <h1 class="headline reveal" style="margin-top: .9rem;">
+        Building reliable tools for the frontlines of <span class="gradient-text">wildfire response</span>.
+      </h1>
+      <p class="sub reveal" style="margin-top:.6rem;">
+        I'm David, a systems‑minded developer focused on resilient UX for high‑stakes fieldwork. Explore my skills, dive into my wildfire app, and browse photos/videos of the system in action.
+      </p>
+      <div class="cta reveal">
+        <a class="btn primary" href="#wildfire">See the App</a>
+        <a class="btn ghost" href="#photos">Browse Photos</a>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Core Skills</h2>
+        <p class="section-hint">Add/remove tags as you like. Organize by platform, language, and practices.</p>
+
+        <div class="grid skills reveal">
+          <div class="card">
+            <h3>Mobile</h3>
+            <div class="taglist">
+              <span class="tag">SwiftUI / SwiftData</span>
+              <span class="tag">Android (Kotlin/Java)</span>
+              <span class="tag">PDFKit & forms</span>
+              <span class="tag">Offline‑first</span>
+              <span class="tag">App architecture (MVVM)</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Systems & Low‑Level</h3>
+            <div class="taglist">
+              <span class="tag">C / Memory Mgmt</span>
+              <span class="tag">RISC‑V</span>
+              <span class="tag">ROS2</span>
+              <span class="tag">Dev‑containers / Docker</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Data & Forecasting</h3>
+            <div class="taglist">
+              <span class="tag">SES/DES/WMA</span>
+              <span class="tag">Excel modeling</span>
+              <span class="tag">ANOVA / Stats</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Practices</h3>
+            <div class="taglist">
+              <span class="tag">Git/GitHub</span>
+              <span class="tag">CI basics</span>
+              <span class="tag">UX for the field</span>
+              <span class="tag">Accessibility</span>
+              <span class="tag">Testing mindset</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WILDFIRE APP SHOWCASE -->
+    <section id="wildfire">
+      <div class="container">
+        <h2 class="section-title">Wildfire App</h2>
+        <p class="section-hint">Short pitch + feature highlights. Replace videos below with your demo links or local MP4s.</p>
+
+        <div class="grid videos reveal" style="margin-bottom:1.2rem;">
+          <!-- Replace src with your YouTube demo or a local mp4 using <video> -->
+          <div class="vid">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Wildfire App Overview" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="vid">
+            <video src="assets/wildfire-demo.mp4" poster="assets/poster.jpg" controls></video>
+          </div>
+        </div>
+
+        <div class="features reveal">
+          <div class="feature">
+            <h4>Inventory & Ordering</h4>
+            <p class="muted">SwiftData models for pumps, hose, tools; auto‑generated PDF forms (FP131) with share sheet.</p>
+          </div>
+          <div class="feature">
+            <h4>Offline‑First</h4>
+            <p class="muted">State‑safe UI and local persistence; robust to spotty field connectivity.</p>
+          </div>
+          <div class="feature">
+            <h4>Operator‑Centric UX</h4>
+            <p class="muted">Big targets, low‑glare palette, tactile feedback, minimal cognitive load.</p>
+          </div>
+          <div class="feature">
+            <h4>Cross‑Platform</h4>
+            <p class="muted">Companion Android prototype with shared design language.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY -->
+    <section id="photos">
+      <div class="container">
+        <h2 class="section-title">Photo Gallery</h2>
+        <p class="section-hint">Drop images into <code>/assets/photos/</code> and update the <code>data-</code> attributes below. Click any photo to open the lightbox.</p>
+
+        <div class="grid gallery reveal" id="gallery">
+          <a class="thumb" href="assets/photos/pump-setup.jpg" data-title="Mark III pump setup">
+            <img src="assets/photos/pump-setup.jpg" alt="Pump setup" />
+            <div class="cap">Mark III pump setup</div>
+          </a>
+          <a class="thumb" href="assets/photos/hose-lay.jpg" data-title="Hose lay staging">
+            <img src="assets/photos/hose-lay.jpg" alt="Hose lay" />
+            <div class="cap">Hose lay staging</div>
+          </a>
+          <a class="thumb" href="assets/photos/chainsaw.jpg" data-title="Chainsaw prep">
+            <img src="assets/photos/chainsaw.jpg" alt="Chainsaw" />
+            <div class="cap">Chainsaw prep</div>
+          </a>
+          <a class="thumb" href="assets/photos/crew.jpg" data-title="Crew kit check">
+            <img src="assets/photos/crew.jpg" alt="Crew" />
+            <div class="cap">Crew kit check</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO GALLERY -->
+    <section id="videos">
+      <div class="container">
+        <h2 class="section-title">Video Gallery</h2>
+        <p class="section-hint">Place MP4s in <code>/assets/videos/</code>, or use YouTube embeds. Keep clips concise with captions.</p>
+
+        <div class="grid videos reveal">
+          <div class="vid"><video src="assets/videos/overview.mp4" controls></video></div>
+          <div class="vid"><iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" title="Feature Walkthrough" frameborder="0" allowfullscreen></iframe></div>
+          <div class="vid"><video src="assets/videos/pdf-workflow.mp4" controls></video></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-hint">Open to collaborations, field testing, and feedback. Reach out:</p>
+        <div class="card reveal" style="display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
+          <div>
+            <div style="font-weight:600;">Let's talk.</div>
+            <div class="muted">Email: <a href="mailto:you@example.com">you@example.com</a> • GitHub: <a href="https://github.com/yourhandle" target="_blank" rel="noopener">@yourhandle</a> • LinkedIn</div>
+          </div>
+          <div class="socials">
+            <a class="btn" href="#" aria-label="Email">✉️ Email</a>
+            <a class="btn" href="#" aria-label="GitHub">🐙 GitHub</a>
+            <a class="btn" href="#" aria-label="LinkedIn">💼 LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="muted">© <span id="year"></span> David Tyrrell. Built with pure HTML/CSS/JS. Deployed on GitHub Pages.</div>
+    </div>
+  </footer>
+
+  <!-- Lightbox + Reveal + Sparks scripts -->
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Intersection Observer for reveal animations
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); })
+    }, { threshold: .14 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Simple lightbox for gallery
+    const gallery = document.getElementById('gallery');
+    if (gallery) {
+      gallery.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        e.preventDefault();
+        openLightbox(a.getAttribute('href'), a.dataset.title || '');
+      });
+    }
