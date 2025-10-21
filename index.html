@@ -283,13 +283,12 @@
     <div class="grid videos reveal">
       <div class="vid">
         <!-- If your repo is username.github.io, put the game at /games/bitsy-mygame.html -->
-        <iframe
-          src="games/the_dark_knight.html"
-          title="Bitsy — My Game"
-          loading="lazy"
-          style="border:0"
-          allowfullscreen
-        ></iframe>
+          <iframe
+            id="bitsy1"
+            title="Bitsy — The Dark Knight"
+            style="border:0; width:100%; height:560px;"
+            allowfullscreen
+          ></iframe>
       </div>
       <!-- (Optional) Add more games by duplicating this .vid block -->
       <!--
@@ -331,6 +330,35 @@
       <div class="muted">© <span id="year"></span> David Tyrrell. Built with pure HTML/CSS/JS. Deployed on GitHub Pages.</div>
     </div>
   </footer>
+  <script>
+  // If your site is a *user site* like dtyrrelldev.github.io:
+  const GAME_PATH = "/games/the_dark_knight.html";
+
+  // If this were a *project site* (e.g., /wildfire-portfolio/), you’d use:
+  // const GAME_PATH = "/wildfire-portfolio/games/the_dark_knight.html";
+
+  (async () => {
+    try {
+      const res = await fetch(GAME_PATH, { credentials: "same-origin" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const html = await res.text();
+
+      // Use a Blob URL so there are no X-Frame headers to block framing
+      const blob = new Blob([html], { type: "text/html" });
+      const url = URL.createObjectURL(blob);
+
+      const frame = document.getElementById("bitsy1");
+      frame.src = url;
+    } catch (err) {
+      console.error("Failed to load Bitsy game:", err);
+      // Optional: show a helpful fallback link in the UI
+      const msg = document.createElement("div");
+      msg.className = "muted";
+      msg.innerHTML = `Couldn’t embed the game. <a class="pill" href="${GAME_PATH}" target="_blank" rel="noopener">Open full screen ↗</a>`;
+      document.querySelector("#games .container").appendChild(msg);
+    }
+  })();
+</script>
 
   <!-- Lightbox + Reveal + Sparks scripts -->
   <script>
