@@ -57,7 +57,13 @@
     header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); background: linear-gradient(180deg, #0b0b0caa, #0b0b0c33); border-bottom:1px solid #ffffff14; }
     .nav { display:flex; align-items:center; justify-content:space-between; padding: .9rem 0; }
     .brand { display:flex; align-items:center; gap:.75rem; font-weight:800; letter-spacing:.3px; }
-    .logo { width: 30px; height: 30px; border-radius:7px; background: conic-gradient(from 210deg, var(--brand1), var(--brand3), var(--brand2)); box-shadow: 0 0 0 1px #ffffff22 inset; }
+    .logo-img{
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      object-fit: cover;
+      box-shadow: 0 0 0 1px #ffffff22 inset;
+    }
     nav a { padding:.5rem .8rem; border-radius:.6rem; color: #cfd3dc; }
     nav a:hover { background:#ffffff12; color:#fff; }
 
