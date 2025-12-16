@@ -58,21 +58,14 @@
     .nav { display:flex; align-items:center; justify-content:space-between; padding: .9rem 0; }
     .brand { display:flex; align-items:center; gap:.75rem; font-weight:800; letter-spacing:.3px; }
     .logo-img{
-      width: 5px;
-      height: 5px;
+      width: 30px;
+      height: 30px;
       border-radius: 7px;
       object-fit: cover;
       box-shadow: 0 0 0 1px #ffffff22 inset;
     }
     nav a { padding:.5rem .8rem; border-radius:.6rem; color: #cfd3dc; }
     nav a:hover { background:#ffffff12; color:#fff; }
-
-    /* --- Hero --- */
-    .hero { padding: 8rem 0 5rem; position: relative; }
-    .headline { font-size: clamp(2rem, 4vw + 1rem, 3.3rem); font-weight: 800; letter-spacing:.2px; line-height:1.1; }
-    .gradient-text { background: linear-gradient(135deg, var(--brand3), var(--brand1), var(--brand2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .sub { max-width: 70ch; color: var(--muted); margin-top: 1rem; }
-    .cta { margin-top: 1.5rem; display:flex; gap:.8rem; flex-wrap: wrap; }
 
     /* --- Sections --- */
     section { padding: 4rem 0; }
@@ -117,6 +110,74 @@
       .hero { padding-top: 6rem; }
       .cta { flex-direction: column; align-items: stretch; }
     }
+
+    /* Bio card styling: */
+        .bio-card {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .bio-card .bio-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 16px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid #ffffff22;
+    }
+
+    @media (max-width: 640px) {
+      .bio-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    .games-grid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.game-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.game-media .thumb {
+  display: block;
+  aspect-ratio: 16/9;
+}
+
+.game-thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .55rem;
+  margin-top: .65rem;
+}
+
+.game-thumbs img {
+  width: 100%;
+  height: 74px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #ffffff1a;
+  opacity: .92;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.game-thumbs img:hover {
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+.game-actions {
+  display: flex;
+  gap: .7rem;
+  flex-wrap: wrap;
+}
+
+
   </style>
 </head>
 <body>
@@ -131,6 +192,7 @@
       </div>
       <nav>
         <a href="#skills">Skills</a>
+        <a href="#bio">Bio</a>
         <a href="#wildfire">Wildfire App</a>
         <a href="#photos">Photos</a>
         <a href="#videos">Videos</a>
@@ -141,26 +203,180 @@
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="hero container">
-      <span class="pill">🚒 Wildfire • Mobile + Swift • Android</span>
-      <h1 class="headline reveal" style="margin-top: .9rem;">
-        Building reliable tools for the frontlines of <span class="gradient-text">wildfire response</span>.
-      </h1>
-      <p class="sub reveal" style="margin-top:.6rem;">
-        I'm David, a systems‑minded developer focused on resilient UX for high‑stakes fieldwork. Explore my skills, dive into my wildfire app, and browse photos/videos of the system in action.
-      </p>
-      <div class="cta reveal">
-        <a class="btn primary" href="#wildfire">See the App</a>
-        <a class="btn ghost" href="#photos">Browse Photos</a>
+
+    <!-- BIO -->
+    <section id="bio">
+    <div class="container">
+      <h2 class="section-title">Bio</h2>
+      
+
+      <div class="card bio-card">
+        <img
+          src="assets/profilepic1.jpg"
+          alt="David Tyrrell"
+          class="bio-image"
+        />
+
+        <div>
+          <p style="margin-top:0;">
+            Hi! My name is David Tyrrell, and I'm currently living in Edmonton, Alberta. I am in my third year of Computing Science at the University of Alberta, specializing in Software Practice.
+            Lately, I've been experimenting with making apps, games, and a bit of robotics! I am a member of <a href="https://arvp.org" target="_blank" rel="noopener" style="color:var(--brand3);">
+              (ARVP)
+            </a>, the Autonomous Robotic Vehicle Project based out of the UofA. I'm also a member of the <a href="https://wildfireanalytics.org/index.html" target="_blank" rel="noopener" style="color:var(--brand3);">
+              Wildfire Analytics Team.
+            </a>
+            led by Dr. Jen Beverly.
+            
+          </p>
+
+           
+
+          <div class="socials" style="margin-top:1rem;">
+            <a class="btn" href="https://www.linkedin.com/in/davidjtyrrell/" target="_blank" rel="noopener">💼 LinkedIn</a>
+            <a
+                  class="btn"
+                   href="https://mail.google.com/mail/?view=cm&to=davidtyrrell2022@gmail.com&su=Portfolio%20Inquiry&body=Hi%20David,%0A%0AI%20saw%20your%20portfolio%20and%20wanted%20to%20reach%20out."
+                  target="_blank"
+                >
+                  ✉️ Email Me
+                </a>
+          </div>
+        </div>
       </div>
-    </section>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MY GAMES -->
+  <section id="games">
+    <div class="container">
+      <h2 class="section-title">My Games</h2>
+      <p class="section-hint">
+        I've made and collaborated on a few games! Most notably Meter's Running (Unity taxi survival)
+        and DJ Simulator (beat-matching with a real DJ controller).
+      </p>
+
+      <div class="grid games-grid reveal">
+
+        <!-- Meter's Running -->
+        <article class="card game-card">
+          <div class="game-media">
+            <a class="thumb" href="assets/metersrunning1.png" data-title="Meter's Running — screenshot">
+              <img src="assets/metersrunning1.png" alt="Meter's Running screenshot" />
+              <div class="cap">Meter's Running</div>
+            </a>
+
+            <div class="game-thumbs">
+              <img src="assets/metersrunning1.png" alt="Meter's Running screenshot 2" />
+              <img src="assets/metersrunning1.png" alt="Meter's Running screenshot 3" />
+              <img src="assets/metersrunning1.png" alt="Meter's Running screenshot 4" />
+            </div>
+          </div>
+
+          <div class="game-body">
+            <h3 style="margin:.2rem 0 .4rem;">Meter's Running</h3>
+            <p class="muted" style="margin:.4rem 0 1rem;">
+              A Unity-made taxi game: survive a zombie-filled city, pick up passengers, and keep the meter running.
+              Built with tight moment-to-moment driving and risk/reward routing.
+            </p>
+
+            <div class="taglist" style="margin-bottom:1rem;">
+              <span class="tag">Unity</span>
+              <span class="tag">C#</span>
+              <span class="tag">Arcade Driving</span>
+              <span class="tag">Survival</span>
+            </div>
+
+            <div class="game-actions">
+              <a class="btn primary" href="https://mrstrqfe.itch.io/meters-running" target="_blank" rel="noopener">▶ Play on itch.io</a>
+              <!-- <a class="btn ghost" href="#" target="_blank" rel="noopener">📷 More media</a> -->
+            </div>
+          </div>
+        </article>
+
+        <!-- DJ Simulator -->
+        <article class="card game-card">
+          <div class="game-media">
+            <a class="thumb" href="assets/djSimulator1.png" data-title="DJ Simulator — screenshot">
+              <img src="assets/djSimulator1.png" alt="DJ Simulator screenshot" />
+              <div class="cap">DJ Simulator</div>
+            </a>
+
+            <div class="game-thumbs">
+              <img src="assets/djSimulator1.png" alt="DJ Simulator screenshot 2" />
+              <img src="assets/djSimulator1.png" alt="DJ Simulator screenshot 3" />
+              <img src="assets/djSimulator1.png" alt="DJ Simulator screenshot 4" />
+            </div>
+          </div>
+
+          <div class="game-body">
+            <h3 style="margin:.2rem 0 .4rem;">DJ Simulator</h3>
+            <p class="muted" style="margin:.4rem 0 1rem;">
+              I was lucky enough to find @RuolinZheng08's renpy-rhythm engine online, and knew it was perfect for my DJ simulator adaptation! I used Borne Midi Translator Pro to 
+              be able to convert my DDJ FLX-2 DJ controller into a game controller! If you'd also like to play with your controller, I recommend using Borne Midi Translator Pro to bind
+              your keybinds to the ones needed for the game(can be found in the repo linked below).
+            </p>
+
+            <div class="taglist" style="margin-bottom:1rem;">
+              <span class="tag">Rhythm</span>
+              <span class="tag">Controller</span>
+              <span class="tag">Audio</span>
+              <span class="tag">Gameplay UX</span>
+            </div>
+
+            <div class="game-actions">
+              <!--  TODO: film a video of me playing the game and upload it here:  -->
+              <!-- <a class="btn" href="https://YOUR-VIDEO-OR-DEMO-LINK" target="_blank" rel="noopener">🎥 Watch demo</a> -->
+              <a class="btn ghost" href="https://github.com/d-tyrrell/renpy-rhythm" target="_blank" rel="noopener">🐙 Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Bitsy — The Dark Knight -->
+        <article class="card game-card">
+          <div class="game-media">
+            <a class="thumb" href="assets/darkKnight.png" data-title="The Dark Knight — Bitsy">
+              <img src="assets/darkKnight.png" alt="The Dark Knight screenshot" />
+              <div class="cap">The Dark Knight (Bitsy)</div>
+            </a>
+
+            <div class="game-thumbs">
+              <img src="assets/darkKnight.png" alt="The Dark Knight screenshot 2" />
+              <img src="assets/darkKnight.png" alt="The Dark Knight screenshot 3" />
+              <img src="assets/darkKnight.png" alt="The Dark Knight screenshot 4" />
+            </div>
+          </div>
+
+          <div class="game-body">
+            <h3 style="margin:.2rem 0 .4rem;">The Dark Knight (Bitsy)</h3>
+            <p class="muted" style="margin:.4rem 0 1rem;">
+              A tiny narrative prototype made in Bitsy. Explore, interact, and uncover the tone through small spaces
+              and deliberate pacing.
+            </p>
+
+            <div class="taglist" style="margin-bottom:1rem;">
+              <span class="tag">Bitsy</span>
+              <span class="tag">Narrative</span>
+              <span class="tag">Prototype</span>
+            </div>
+
+            <div class="game-actions">
+              <a class="btn primary" href="games/the_dark_knight.html" target="_blank" rel="noopener">▶ Play full screen</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
 
     <!-- SKILLS -->
     <section id="skills">
       <div class="container">
         <h2 class="section-title">Core Skills</h2>
-        <p class="section-hint">Add/remove tags as you like. Organize by platform, language, and practices.</p>
 
         <div class="grid skills reveal">
           <div class="card">
@@ -208,17 +424,7 @@
     <section id="wildfire">
       <div class="container">
         <h2 class="section-title">Wildfire App</h2>
-        <p class="section-hint">Short pitch + feature highlights. Replace videos below with your demo links or local MP4s.</p>
-
-        <div class="grid videos reveal" style="margin-bottom:1.2rem;">
-          <!-- Replace src with your YouTube demo or a local mp4 using <video> -->
-          <div class="vid">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Wildfire App Overview" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <div class="vid">
-            <video src="assets/wildfire-demo.mp4" poster="assets/poster.jpg" controls></video>
-          </div>
-        </div>
+        <p class="section-hint">Coming soon! I have built a wildfire Inventory App that should be coming to the app store soon! These are some of the highlights so far:</p>
 
         <div class="features reveal">
           <div class="feature">
@@ -242,7 +448,7 @@
     </section>
 
     <!-- PHOTO GALLERY -->
-    <section id="photos">
+    <!-- <section id="photos">
       <div class="container">
         <h2 class="section-title">Photo Gallery</h2>
         <p class="section-hint">Drop images into <code>/assets/photos/</code> and update the <code>data-</code> attributes below. Click any photo to open the lightbox.</p>
@@ -266,68 +472,37 @@
           </a>
         </div>
       </div>
-    </section>
+    </section> -->
 
-    <!-- VIDEO GALLERY -->
+    <!-- VIDEO GALLERY
     <section id="videos">
       <div class="container">
         <h2 class="section-title">Video Gallery</h2>
         <p class="section-hint">Place MP4s in <code>/assets/videos/</code>, or use YouTube embeds. Keep clips concise with captions.</p>
 
-        <div class="grid videos reveal">
-          <div class="vid"><video src="assets/videos/overview.mp4" controls></video></div>
-          <div class="vid"><iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" title="Feature Walkthrough" frameborder="0" allowfullscreen></iframe></div>
-          <div class="vid"><video src="assets/videos/pdf-workflow.mp4" controls></video></div>
-        </div>
       </div>
-    </section>
+    </section> -->
 
-    <!-- MY GAMES -->
-<section id="games">
-  <div class="container">
-    <h2 class="section-title">My Games</h2>
-    <p class="section-hint">Bitsy and other tiny prototypes. Hosted right here on GitHub Pages.</p>
-
-    <!-- Use your exported Bitsy HTML file path below -->
-    <div class="grid videos reveal">
-      <div class="vid">
-        <!-- If your repo is username.github.io, put the game at /games/bitsy-mygame.html -->
-          <iframe
-            id="bitsy1"
-            title="Bitsy — The Dark Knight"
-            style="border:0; width:100%; height:560px;"
-            allowfullscreen
-          ></iframe>
-      </div>
-      <!-- (Optional) Add more games by duplicating this .vid block -->
-      <!--
-      <div class="vid">
-        <iframe src="games/another-bitsy.html" title="Another Bitsy" loading="lazy" style="border:0" allowfullscreen></iframe>
-      </div>
-      -->
-    </div>
-
-    <div class="muted" style="margin-top:.8rem">
-      If the embed doesn’t load, try
-      <a class="pill" href="games/the_dark_knight.html" target="_blank" rel="noopener">Open full screen ↗</a>
-    </div>
-  </div>
-</section>
+  
 
     <!-- CONTACT -->
     <section id="contact">
       <div class="container">
         <h2 class="section-title">Contact</h2>
         <p class="section-hint">Open to collaborations, field testing, and feedback. Reach out:</p>
-        <div class="card reveal" style="display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
+        <div class="card" style="display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
           <div>
             <div style="font-weight:600;">Let's talk.</div>
-            <div class="muted">Email: <a href="mailto:you@example.com">you@example.com</a> • GitHub: <a href="https://github.com/yourhandle" target="_blank" rel="noopener">@yourhandle</a> • LinkedIn</div>
+            <div class="muted">Email: <a href="https://mail.google.com/mail/?view=cm&to=davidtyrrell2022@gmail.com&su=Portfolio%20Inquiry&body=Hi%20David,%0A%0AI%20saw%20your%20portfolio%20and%20wanted%20to%20reach%20out."
+              >davidtyrrell2022@gmail.com</a> • GitHub: <a href="https://github.com/dtyrrelldev" target="_blank" rel="noopener">@dtyrrelldev</a> • LinkedIn</div>
           </div>
+          
+                 
           <div class="socials">
-            <a class="btn" href="#" aria-label="Email">✉️ Email</a>
+            <a class="btn" href="https://mail.google.com/mail/?view=cm&to=davidtyrrell2022@gmail.com&su=Portfolio%20Inquiry&body=Hi%20David,%0A%0AI%20saw%20your%20portfolio%20and%20wanted%20to%20reach%20out."
+               aria-label="Email Me" target="_blank" rel="noopener">✉️ Email Me</a> 
             <a class="btn" href="#" aria-label="GitHub">🐙 GitHub</a>
-            <a class="btn" href="#" aria-label="LinkedIn">💼 LinkedIn</a>
+            <a class="btn" href="https://www.linkedin.com/in/davidjtyrrell/" aria-label="LinkedIn" target="_blank" rel="noopener">💼 LinkedIn</a>
           </div>
         </div>
       </div>
@@ -357,6 +532,10 @@
       const url = URL.createObjectURL(blob);
 
       const frame = document.getElementById("bitsy1");
+      if (!frame) {
+        console.warn("Bitsy iframe #bitsy1 not found; skipping embed.");
+        return;
+}
       frame.src = url;
     } catch (err) {
       console.error("Failed to load Bitsy game:", err);
@@ -370,23 +549,29 @@
 </script>
 
   <!-- Lightbox + Reveal + Sparks scripts -->
+
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+  // Year
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Intersection Observer for reveal animations
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); })
-    }, { threshold: .14 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Reveal animations (safe)
+  try {
+    const targets = document.querySelectorAll(".reveal");
 
-    // Simple lightbox for gallery
-    const gallery = document.getElementById('gallery');
-    if (gallery) {
-      gallery.addEventListener('click', (e) => {
-        const a = e.target.closest('a');
-        if (!a) return;
-        e.preventDefault();
-        openLightbox(a.getAttribute('href'), a.dataset.title || '');
-      });
+    // If IntersectionObserver isn't supported or something fails, just show everything.
+    if (!("IntersectionObserver" in window)) {
+      targets.forEach(el => el.classList.add("in"));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("in"); });
+      }, { threshold: 0.14 });
+
+      targets.forEach(el => io.observe(el));
     }
+  } catch (e) {
+    console.warn("Reveal failed; forcing visible:", e);
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
+  }
+</script>
+
