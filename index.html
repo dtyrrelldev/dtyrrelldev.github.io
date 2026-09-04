@@ -285,6 +285,150 @@
     .contribution .tag { border-color:#a86cff32; background:#7200ff12; }
     .tech-stack { margin-top:1.7rem; }
 
+    /* --- Wildfire Inventory iOS case study --- */
+    .wildfire-shell {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(1.35rem, 3vw, 2.5rem);
+      border: 1px solid #ff8a304d;
+      border-radius: 30px;
+      background:
+        radial-gradient(640px 420px at 4% 4%, #e04a1e24, transparent 67%),
+        radial-gradient(520px 390px at 96% 96%, #ffb14a16, transparent 70%),
+        linear-gradient(145deg, #1c1512, #101115 64%);
+      box-shadow: 0 34px 90px -55px #ff681e;
+    }
+    .wildfire-shell::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      left: -235px;
+      bottom: -230px;
+      border: 1px solid #ffb14a22;
+      border-radius: 50%;
+      box-shadow: 0 0 0 44px #ff8a3008, 0 0 0 88px #ff8a3005;
+      pointer-events: none;
+    }
+    .wildfire-intro {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr);
+      align-items: center;
+      gap: clamp(2rem, 5vw, 4rem);
+    }
+    .wildfire-eyebrow { color:#ffc58e; }
+    .wildfire-eyebrow::before { background:linear-gradient(90deg, #ff8a30, transparent); }
+    .wildfire-copy h2 {
+      margin: 0;
+      font-size: clamp(2.75rem, 6.4vw, 5.35rem);
+      line-height: .92;
+      letter-spacing: -.065em;
+    }
+    .wildfire-copy h2 span {
+      display: block;
+      margin-top: .75rem;
+      color: #ff9a43;
+      font-size: .27em;
+      line-height: 1.1;
+      letter-spacing: .055em;
+      text-transform: uppercase;
+    }
+    .wildfire-lede {
+      max-width: 56ch;
+      margin: 1.35rem 0 1.5rem;
+      color: #d8d2cd;
+      font-size: 1.03rem;
+    }
+    .wildfire-shell .project-facts .pill {
+      color:#ffe4cb;
+      border-color:#ff9a4338;
+      background:#ff7a1814;
+    }
+    .wildfire-actions { display:flex; gap:.7rem; flex-wrap:wrap; }
+    .btn.wildfire-primary {
+      background:linear-gradient(135deg, #ff8b2d, #b83418);
+      border-color:transparent;
+      box-shadow:0 12px 34px -18px #ff7927;
+    }
+    .field-gallery {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1.02fr .98fr;
+      gap: .75rem;
+      min-height: 560px;
+      padding: .7rem;
+      border: 1px solid #ffffff14;
+      border-radius: 24px;
+      background: #08090c99;
+      box-shadow: 0 30px 70px -40px #000;
+    }
+    .field-photo {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      min-height: 0;
+      border: 1px solid #ffffff19;
+      border-radius: 16px;
+      background: #131418;
+    }
+    .field-photo.wide { grid-column: 1 / -1; }
+    .field-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.9) contrast(1.04);
+      transition: transform .55s ease, filter .55s ease;
+    }
+    .field-photo:hover img { transform:scale(1.035); filter:saturate(1) contrast(1.04); }
+    .field-photo figcaption {
+      position: absolute;
+      inset: auto .65rem .65rem;
+      width: fit-content;
+      padding: .42rem .65rem;
+      border: 1px solid #ffffff20;
+      border-radius: 999px;
+      background: #0b0c10d9;
+      color: #f4e4d5;
+      font-size: .75rem;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+    }
+    .field-gallery-label {
+      position: absolute;
+      z-index: 4;
+      top: 1.25rem;
+      right: 1.25rem;
+      padding: .5rem .72rem;
+      border: 1px solid #ffaf6945;
+      border-radius: 999px;
+      background: #17100ce0;
+      color: #ffd4ad;
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      backdrop-filter: blur(10px);
+    }
+    .wildfire-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 2.5rem;
+      overflow: hidden;
+      border: 1px solid #ffffff14;
+      border-radius: 18px;
+      background: #ffffff14;
+    }
+    .wildfire-flow .flow-index { color:#ff9a43; }
+    .wildfire-shell .contribution .tag {
+      border-color:#ff9a4330;
+      background:#ff7a1810;
+    }
+    .wildfire-stack .tag {
+      border-color:#ff9a4330;
+      background:#ff7a1810;
+    }
+
     /* --- Footer --- */
     footer { padding: 4rem 0 5rem; color: var(--muted); border-top:1px solid #ffffff14; background: linear-gradient(180deg,#0b0b0c44, transparent); }
     .socials { display:flex; gap:.7rem; flex-wrap:wrap; }
@@ -298,6 +442,9 @@
       .haboob-intro { grid-template-columns:1fr; }
       .haboob-copy { max-width: 650px; }
       .phone-stage { width:min(100%, 570px); margin:0 auto; }
+      .wildfire-intro { grid-template-columns:1fr; }
+      .wildfire-copy { max-width:650px; }
+      .field-gallery { width:min(100%, 620px); margin:0 auto; }
       .contribution { grid-template-columns:1fr; gap:1rem; }
     }
 
@@ -308,12 +455,15 @@
       nav { width:100%; justify-content:flex-start; overflow-x:auto; flex-wrap:nowrap; padding-bottom:.2rem; }
       nav a { white-space:nowrap; }
       section { padding: 3rem 0; }
-      .haboob-shell { border-radius:22px; }
+      .haboob-shell, .wildfire-shell { border-radius:22px; }
       .phone-stage { min-height:500px; }
       .phone-shot.main { width:220px; }
       .phone-shot.create { width:165px; top:110px; left:-20px; }
       .phone-shot.qr { width:160px; top:128px; right:-22px; }
       .haboob-flow { grid-template-columns:1fr 1fr; }
+      .wildfire-flow { grid-template-columns:1fr 1fr; }
+      .field-gallery { min-height:460px; gap:.5rem; padding:.5rem; }
+      .field-photo { border-radius:12px; }
       .flow-step { min-height:150px; }
       .contribution { grid-template-columns:1fr; gap:1rem; }
     }
@@ -437,8 +587,10 @@
 
         <div>
           <p style="margin-top:0;">
-            Hi! My name is David Tyrrell, and I'm currently living in Edmonton, Alberta. I am in my fourth year of Computing Science at the University of Alberta, specializing in Software Practice.
-            Lately, I've been experimenting with making apps, games, and a bit of robotics! I'm a member of the <a href="https://wildfireanalytics.org/index.html" target="_blank" rel="noopener" style="color:var(--brand3);">
+            Hi! My name is David Tyrrell, and I'm currently living in Edmonton, Alberta. I am in my third year of Computing Science at the University of Alberta, specializing in Software Practice.
+            Lately, I've been experimenting with making apps, games, and a bit of robotics! I am a member of <a href="https://arvp.org" target="_blank" rel="noopener" style="color:var(--brand3);">
+              (ARVP)
+            </a>, the Autonomous Robotic Vehicle Project based out of the UofA. I'm also a member of the <a href="https://wildfireanalytics.org/index.html" target="_blank" rel="noopener" style="color:var(--brand3);">
               Wildfire Analytics Team.
             </a>
             led by Dr. Jen Beverly.
@@ -590,6 +742,7 @@
 
             <div class="taglist" style="margin-bottom:1rem;">
               <span class="tag">Unity</span>
+              <span class="tag">6-Person Team </span>
               <span class="tag">C#</span>
               <span class="tag">Arcade Driving</span>
               <span class="tag">Survival</span>
@@ -730,27 +883,94 @@
     <!-- WILDFIRE APP SHOWCASE -->
     <section id="wildfire">
       <div class="container">
-        <h2 class="section-title">Wildfire App</h2>
-        <p class="section-hint">Coming soon! I have built a wildfire Inventory App that should be coming to the app store soon! These are some of the highlights so far:</p>
+        <article class="wildfire-shell reveal">
+          <div class="wildfire-intro">
+            <div class="wildfire-copy">
+              <div class="eyebrow wildfire-eyebrow">Field operations · Independent project</div>
+              <h2>Wildfire<span>Inventory for iOS</span></h2>
+              <p class="wildfire-lede">
+                A field-ready inventory tool for counting the equipment on a wildfire truck,
+                comparing it with crew requirements, and turning the result into a completed
+                FP131 order form—without relying on a network connection.
+              </p>
 
-        <div class="features reveal">
-          <div class="feature">
-            <h4>Inventory &amp; Ordering</h4>
-            <p class="muted">SwiftData models for pumps, hose, tools; auto‑generated PDF forms (FP131) with share sheet.</p>
+              <div class="project-facts" role="list" aria-label="Wildfire Inventory project details">
+                <span class="pill" role="listitem">45 catalogued items</span>
+                <span class="pill" role="listitem">Offline-first</span>
+                <span class="pill" role="listitem">iPhone + iPad</span>
+              </div>
+
+              <div class="wildfire-actions">
+                <a class="btn wildfire-primary" href="https://github.com/dtyrrelldev/Wildfire_Inventory" target="_blank" rel="noopener noreferrer">View the code ↗</a>
+                <a class="btn ghost" href="#wildfire-flow">Explore the workflow ↓</a>
+              </div>
+            </div>
+
+            <div class="field-gallery" role="group" aria-label="Original equipment photography used in the Wildfire Inventory app">
+              <div class="field-gallery-label">Original in-app photography</div>
+              <figure class="field-photo wide">
+                <img src="assets/wildfire/chainsaw.webp" alt="Field photograph of a chainsaw used in the app inventory" loading="lazy" />
+                <figcaption>Chainsaw</figcaption>
+              </figure>
+              <figure class="field-photo">
+                <img src="assets/wildfire/mark-iii-pump.webp" alt="Field photograph of a Mark III wildfire pump" loading="lazy" />
+                <figcaption>Mark III pump</figcaption>
+              </figure>
+              <figure class="field-photo">
+                <img src="assets/wildfire/pulaski.webp" alt="Field photograph of a Pulaski hand tool" loading="lazy" />
+                <figcaption>Pulaski</figcaption>
+              </figure>
+            </div>
           </div>
-          <div class="feature">
-            <h4>Offline‑First</h4>
-            <p class="muted">State‑safe UI and local persistence; robust to spotty field connectivity.</p>
+
+          <div class="wildfire-flow" id="wildfire-flow">
+            <div class="flow-step">
+              <div class="flow-index">01 · COUNT</div>
+              <h3>Record truck inventory</h3>
+              <p>Search a photo-led equipment grid and adjust quantities with repeatable controls.</p>
+            </div>
+            <div class="flow-step">
+              <div class="flow-index">02 · CALCULATE</div>
+              <h3>Choose the target</h3>
+              <p>Work from HAC or Unit crew requirements, or keep complete manual control.</p>
+            </div>
+            <div class="flow-step">
+              <div class="flow-index">03 · REVIEW</div>
+              <h3>Confirm the order</h3>
+              <p>Review item quantities and reuse saved ordering and approval details.</p>
+            </div>
+            <div class="flow-step">
+              <div class="flow-index">04 · EXPORT</div>
+              <h3>Produce the FP131</h3>
+              <p>Fill the official PDF, review it in-app, and share the finished order.</p>
+            </div>
           </div>
-          <div class="feature">
-            <h4>Operator‑Centric UX</h4>
-            <p class="muted">Big targets, low‑glare palette, tactile feedback, minimal cognitive load.</p>
+
+          <div class="contribution">
+            <div>
+              <div class="eyebrow wildfire-eyebrow">Designed &amp; built end-to-end</div>
+              <h3>From the equipment shed to a shareable form</h3>
+              <p>I photographed the field inventory, modeled it for local storage, built the counting workflow, and connected the final order to an editable PDF.</p>
+            </div>
+            <div class="taglist" role="list" aria-label="Wildfire Inventory capabilities">
+              <span class="tag" role="listitem">Photo-led inventory</span>
+              <span class="tag" role="listitem">Search &amp; filtering</span>
+              <span class="tag" role="listitem">Persistent quantities</span>
+              <span class="tag" role="listitem">Crew requirement modes</span>
+              <span class="tag" role="listitem">Saved profile defaults</span>
+              <span class="tag" role="listitem">PDF form automation</span>
+            </div>
           </div>
-          <div class="feature">
-            <h4>Cross‑Platform</h4>
-            <p class="muted">Companion Android prototype with shared design language.</p>
+
+          <div class="taglist tech-stack wildfire-stack" role="list" aria-label="Wildfire Inventory technology stack">
+            <span class="tag" role="listitem">Swift</span>
+            <span class="tag" role="listitem">SwiftUI</span>
+            <span class="tag" role="listitem">SwiftData</span>
+            <span class="tag" role="listitem">PDFKit</span>
+            <span class="tag" role="listitem">UserDefaults</span>
+            <span class="tag" role="listitem">UIKit Share Sheet</span>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
