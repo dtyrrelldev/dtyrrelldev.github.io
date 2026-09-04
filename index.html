@@ -1,14 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>David Tyrrell — Wildfire App | Portfolio</title>
-  <meta name="description" content="Portfolio website to showcase skills, photos, and videos for the Wildfire app." />
+  <title>David Tyrrell — Software Developer Portfolio</title>
+  <meta name="description" content="David Tyrrell's software development portfolio: Android apps, games, robotics, and field tools." />
   <meta name="color-scheme" content="dark light" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0b0b0c;
@@ -18,6 +18,9 @@
       --brand1: #ff7a18; /* ember */
       --brand2: #af002d; /* cinder */
       --brand3: #ffcf33; /* spark */
+      --haboob: #7200ff;
+      --haboob-bright: #a86cff;
+      --haboob-wash: #f9f2ff;
       --ring: rgba(255, 122, 24, .35);
       --card: #17181cdd;
     }
@@ -48,10 +51,34 @@
 
     /* --- Floating sparks background --- */
     .spark {
-      position: absolute; inset: 0; pointer-events: none; z-index: -1; mask-image: radial-gradient(60% 60% at 50% 40%, black 40%, transparent 80%);
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      -webkit-mask-image: radial-gradient(75% 78% at 50% 48%, black 40%, transparent 88%);
+      mask-image: radial-gradient(75% 78% at 50% 48%, black 40%, transparent 88%);
     }
-    .spark .dot { position:absolute; width: 3px; height: 3px; background: radial-gradient(circle, var(--brand3), transparent 70%); border-radius:999px; opacity:.8; animation: floatUp linear infinite; }
-    @keyframes floatUp { to { transform: translateY(-120vh) translateX(var(--xdrift)); opacity: 0; } }
+    .spark .dot {
+      position: absolute;
+      top: 105vh;
+      width: 3px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--spark-color, var(--brand3));
+      box-shadow: 0 0 8px 2px color-mix(in srgb, var(--spark-color, var(--brand3)) 55%, transparent);
+      opacity: 0;
+      will-change: transform, opacity;
+      animation: floatUp var(--duration) linear var(--delay) infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translate3d(0, 8vh, 0) scale(.7); opacity: 0; }
+      12% { opacity: var(--spark-opacity); }
+      82% { opacity: var(--spark-opacity); }
+      100% { transform: translate3d(var(--xdrift), -125vh, 0) scale(1.25); opacity: 0; }
+    }
+
+    main, footer { position: relative; z-index: 1; }
 
     /* --- Header --- */
     header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); background: linear-gradient(180deg, #0b0b0caa, #0b0b0c33); border-bottom:1px solid #ffffff14; }
@@ -64,7 +91,8 @@
       object-fit: cover;
       box-shadow: 0 0 0 1px #ffffff22 inset;
     }
-    nav a { padding:.5rem .8rem; border-radius:.6rem; color: #cfd3dc; }
+    nav { display:flex; align-items:center; justify-content:flex-end; gap:.1rem; flex-wrap:wrap; }
+    nav a { padding:.5rem .72rem; border-radius:.6rem; color: #cfd3dc; }
     nav a:hover { background:#ffffff12; color:#fff; }
 
     /* --- Sections --- */
@@ -97,6 +125,166 @@
     .feature { background: linear-gradient(180deg, #ffffff10, #ffffff08); border:1px solid #ffffff18; border-radius: 16px; padding: 1rem; }
     .feature h4 { margin:.2rem 0 .4rem; }
 
+    /* --- Haboob Android case study --- */
+    .haboob-shell {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(1.35rem, 3vw, 2.5rem);
+      border: 1px solid #a86cff55;
+      border-radius: 30px;
+      background:
+        radial-gradient(700px 430px at 94% 8%, #7200ff38, transparent 64%),
+        radial-gradient(520px 380px at 2% 100%, #ff7a1819, transparent 70%),
+        linear-gradient(145deg, #18131f, #101115 62%);
+      box-shadow: 0 34px 90px -55px #7200ff;
+    }
+    .haboob-shell::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -180px;
+      top: -210px;
+      border: 1px solid #ffffff17;
+      border-radius: 50%;
+      box-shadow: 0 0 0 46px #ffffff06, 0 0 0 92px #ffffff04;
+      pointer-events: none;
+    }
+    .haboob-intro {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(420px, 1.08fr);
+      align-items: center;
+      gap: clamp(2rem, 5vw, 4rem);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      margin-bottom: 1rem;
+      color: #d6b7ff;
+      font-size: .79rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--haboob-bright), transparent);
+    }
+    .haboob-copy h2 {
+      margin: 0;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: .9;
+      letter-spacing: -.07em;
+    }
+    .haboob-copy h2 span {
+      display: block;
+      color: var(--haboob-bright);
+      font-size: .27em;
+      line-height: 1.1;
+      letter-spacing: .05em;
+      margin-top: .7rem;
+      text-transform: uppercase;
+    }
+    .haboob-lede {
+      max-width: 56ch;
+      margin: 1.35rem 0 1.5rem;
+      color: #d3cfd9;
+      font-size: 1.03rem;
+    }
+    .project-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      margin-bottom: 1.5rem;
+    }
+    .project-facts .pill { color: #e9dcff; border-color: #a86cff38; background: #7200ff16; }
+    .haboob-actions { display:flex; gap:.7rem; flex-wrap:wrap; }
+    .btn.haboob-primary {
+      background: linear-gradient(135deg, #8b22ff, #5700d4);
+      border-color: transparent;
+      box-shadow: 0 12px 34px -18px #8b22ff;
+    }
+    .phone-stage {
+      position: relative;
+      min-height: 580px;
+      isolation: isolate;
+    }
+    .phone-shot {
+      position: absolute;
+      overflow: hidden;
+      width: 230px;
+      margin: 0;
+      border: 7px solid #0b0c10;
+      border-radius: 31px;
+      background: var(--haboob-wash);
+      box-shadow: 0 30px 65px -25px #000, 0 0 0 1px #ffffff1e;
+    }
+    .phone-shot::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      width: 27%;
+      height: 13px;
+      top: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: #090a0d;
+      box-shadow: 0 0 0 1px #ffffff0d;
+    }
+    .phone-shot img { width:100%; height:auto; }
+    .phone-shot.main { z-index:3; width:252px; top:8px; left:50%; transform:translateX(-50%) rotate(-1.2deg); }
+    .phone-shot.create { z-index:2; width:205px; top:77px; left:0; transform:rotate(-7deg); }
+    .phone-shot.qr { z-index:1; width:198px; top:100px; right:0; transform:rotate(7deg); }
+    .screen-label {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      bottom: 2px;
+      transform: translateX(-50%);
+      min-width: 10rem;
+      padding: .55rem .8rem;
+      border: 1px solid #ffffff1c;
+      border-radius: 999px;
+      background: #0d0e12dd;
+      backdrop-filter: blur(10px);
+      color: #d9c4f7;
+      font-size: .75rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .haboob-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 2.5rem;
+      overflow: hidden;
+      border: 1px solid #ffffff14;
+      border-radius: 18px;
+      background: #ffffff14;
+    }
+    .flow-step { min-height: 165px; padding: 1.1rem; background: #101116d9; }
+    .flow-index { color: var(--haboob-bright); font-size:.75rem; font-weight:800; letter-spacing:.12em; }
+    .flow-step h3 { margin:.5rem 0 .45rem; font-size:1.02rem; }
+    .flow-step p { margin:0; color:var(--muted); font-size:.9rem; }
+    .contribution {
+      display: grid;
+      grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
+      gap: 2rem;
+      align-items: start;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #ffffff14;
+    }
+    .contribution h3 { margin:0 0 .5rem; font-size:1.35rem; }
+    .contribution p { margin:0; color:var(--muted); }
+    .contribution .taglist { justify-content:flex-start; }
+    .contribution .tag { border-color:#a86cff32; background:#7200ff12; }
+    .tech-stack { margin-top:1.7rem; }
+
     /* --- Footer --- */
     footer { padding: 4rem 0 5rem; color: var(--muted); border-top:1px solid #ffffff14; background: linear-gradient(180deg,#0b0b0c44, transparent); }
     .socials { display:flex; gap:.7rem; flex-wrap:wrap; }
@@ -106,9 +294,33 @@
     .reveal.in { opacity: 1; transform: none; }
 
     /* --- Responsive tweaks --- */
+    @media (max-width: 900px) {
+      .haboob-intro { grid-template-columns:1fr; }
+      .haboob-copy { max-width: 650px; }
+      .phone-stage { width:min(100%, 570px); margin:0 auto; }
+      .contribution { grid-template-columns:1fr; gap:1rem; }
+    }
+
     @media (max-width: 640px) {
       .hero { padding-top: 6rem; }
       .cta { flex-direction: column; align-items: stretch; }
+      .nav { align-items:flex-start; gap:.55rem; }
+      nav { width:100%; justify-content:flex-start; overflow-x:auto; flex-wrap:nowrap; padding-bottom:.2rem; }
+      nav a { white-space:nowrap; }
+      section { padding: 3rem 0; }
+      .haboob-shell { border-radius:22px; }
+      .phone-stage { min-height:500px; }
+      .phone-shot.main { width:220px; }
+      .phone-shot.create { width:165px; top:110px; left:-20px; }
+      .phone-shot.qr { width:160px; top:128px; right:-22px; }
+      .haboob-flow { grid-template-columns:1fr 1fr; }
+      .flow-step { min-height:150px; }
+      .contribution { grid-template-columns:1fr; gap:1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spark { display:none; }
+      .reveal { opacity:1; transform:none; transition:none; }
     }
 
     /* Bio card styling: */
@@ -191,13 +403,12 @@
         David Tyrrell
       </div>
       <nav>
-        <a href="#skills">Skills</a>
         <a href="#bio">Bio</a>
+        <a href="#haboob">Haboob</a>
+        <a href="#games">Games</a>
+        <a href="#skills">Skills</a>
         <a href="#wildfire">Wildfire App</a>
-        <a href="#photos">Photos</a>
-        <a href="#videos">Videos</a>
         <a href="#contact">Contact</a>
-        <a href="#games">My Games</a>
         <a 
           href="https://dtyrrelldev.github.io/edsonRadioTester/" 
           target="_blank" 
@@ -251,7 +462,98 @@
         </div>
       </div>
 
-      </div>
+    </div>
+  </section>
+
+  <!-- HABOOB ANDROID APP SHOWCASE -->
+  <section id="haboob">
+    <div class="container">
+      <article class="haboob-shell reveal">
+        <div class="haboob-intro">
+          <div class="haboob-copy">
+            <div class="eyebrow">CMPUT 301 · Team project</div>
+            <h2>Haboob<span>Android event lottery app</span></h2>
+            <p class="haboob-lede">
+              Haboob helps people discover oversubscribed events without racing the clock.
+              Entrants join a waitlist, organizers run a fair lottery, and selected attendees
+              accept their invitation—all in one role-aware Android app.
+            </p>
+
+            <div class="project-facts" role="list" aria-label="Project details">
+              <span class="pill" role="listitem">Six-person team</span>
+              <span class="pill" role="listitem">Fall 2025</span>
+              <span class="pill" role="listitem">University of Alberta</span>
+            </div>
+
+            <div class="haboob-actions">
+              <a class="btn haboob-primary" href="https://github.com/CMPUT301F25haboob/haboob-events" target="_blank" rel="noopener noreferrer">View the code ↗</a>
+              <a class="btn ghost" href="#haboob-flow">Explore the workflow ↓</a>
+            </div>
+          </div>
+
+          <div class="phone-stage" role="group" aria-label="Haboob app screens">
+            <figure class="phone-shot create">
+              <img src="assets/haboob/create-event.webp" alt="Haboob organizer event creation screen" loading="lazy" />
+            </figure>
+            <figure class="phone-shot main">
+              <img src="assets/haboob/discover-events.webp" alt="Haboob event discovery home screen" loading="lazy" />
+            </figure>
+            <figure class="phone-shot qr">
+              <img src="assets/haboob/event-qr.webp" alt="Haboob event QR code sharing screen" loading="lazy" />
+            </figure>
+            <div class="screen-label">Real screens from the working app</div>
+          </div>
+        </div>
+
+        <div class="haboob-flow" id="haboob-flow">
+          <div class="flow-step">
+            <div class="flow-index">01 · DISCOVER</div>
+            <h3>Find the right event</h3>
+            <p>Browse, search, and filter events by the details that matter.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-index">02 · JOIN</div>
+            <h3>Enter the waitlist</h3>
+            <p>Join without first-come, first-served pressure and track status in one place.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-index">03 · SELECT</div>
+            <h3>Run a fair lottery</h3>
+            <p>Randomly select entrants, fill vacancies, and notify everyone automatically.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-index">04 · MANAGE</div>
+            <h3>Coordinate the event</h3>
+            <p>Create posters and QR codes, export attendee lists, and moderate content.</p>
+          </div>
+        </div>
+
+        <div class="contribution">
+          <div>
+            <div class="eyebrow">My contribution</div>
+            <h3>Entrant experience &amp; quality</h3>
+            <p>I focused on making the core event journey clear, connected, and dependable.</p>
+          </div>
+          <div class="taglist" role="list" aria-label="David's project contributions">
+            <span class="tag" role="listitem">Event discovery UI</span>
+            <span class="tag" role="listitem">Search &amp; filtering</span>
+            <span class="tag" role="listitem">Waitlist flows</span>
+            <span class="tag" role="listitem">Notification integration</span>
+            <span class="tag" role="listitem">UI polish</span>
+            <span class="tag" role="listitem">JUnit &amp; Mockito tests</span>
+          </div>
+        </div>
+
+        <div class="taglist tech-stack" role="list" aria-label="Haboob technology stack">
+          <span class="tag" role="listitem">Java</span>
+          <span class="tag" role="listitem">Android SDK</span>
+          <span class="tag" role="listitem">Firebase Firestore</span>
+          <span class="tag" role="listitem">Cloud Storage</span>
+          <span class="tag" role="listitem">Google Maps</span>
+          <span class="tag" role="listitem">ZXing QR</span>
+          <span class="tag" role="listitem">Material Design</span>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -391,13 +693,13 @@
             <div class="taglist">
               <span class="tag">SwiftUI / SwiftData</span>
               <span class="tag">Android (Kotlin/Java)</span>
-              <span class="tag">PDFKit & forms</span>
+              <span class="tag">PDFKit &amp; forms</span>
               <span class="tag">Offline‑first</span>
               <span class="tag">App architecture (MVVM)</span>
             </div>
           </div>
           <div class="card">
-            <h3>Systems & Low‑Level</h3>
+            <h3>Systems &amp; Low‑Level</h3>
             <div class="taglist">
               <span class="tag">C / Memory Mgmt</span>
               <span class="tag">RISC‑V</span>
@@ -406,7 +708,7 @@
             </div>
           </div>
           <div class="card">
-            <h3>Data & Forecasting</h3>
+            <h3>Data &amp; Forecasting</h3>
             <div class="taglist">
               <span class="tag">SES/DES/WMA</span>
               <span class="tag">Excel modeling</span>
@@ -435,7 +737,7 @@
 
         <div class="features reveal">
           <div class="feature">
-            <h4>Inventory & Ordering</h4>
+            <h4>Inventory &amp; Ordering</h4>
             <p class="muted">SwiftData models for pumps, hose, tools; auto‑generated PDF forms (FP131) with share sheet.</p>
           </div>
           <div class="feature">
@@ -582,3 +884,36 @@
   }
 </script>
 
+<script>
+  // Decorative ember field
+  (() => {
+    const layer = document.getElementById("spark");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!layer || reduceMotion) return;
+
+    const fragment = document.createDocumentFragment();
+    const sparkCount = Math.min(42, Math.max(20, Math.round(window.innerWidth / 34)));
+    const colors = ["#ffcf33", "#ff8a24", "#e04428"];
+
+    for (let i = 0; i < sparkCount; i += 1) {
+      const dot = document.createElement("span");
+      const size = 2 + Math.random() * 2.5;
+
+      dot.className = "dot";
+      dot.style.left = `${Math.random() * 100}%`;
+      dot.style.top = `${98 + Math.random() * 25}vh`;
+      dot.style.width = `${size}px`;
+      dot.style.height = `${size}px`;
+      dot.style.setProperty("--duration", `${9 + Math.random() * 11}s`);
+      dot.style.setProperty("--delay", `${-Math.random() * 20}s`);
+      dot.style.setProperty("--xdrift", `${-70 + Math.random() * 140}px`);
+      dot.style.setProperty("--spark-opacity", `${0.28 + Math.random() * 0.55}`);
+      dot.style.setProperty("--spark-color", colors[Math.floor(Math.random() * colors.length)]);
+      fragment.appendChild(dot);
+    }
+
+    layer.appendChild(fragment);
+  })();
+</script>
+</body>
+</html>
