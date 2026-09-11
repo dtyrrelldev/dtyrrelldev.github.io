@@ -125,6 +125,285 @@
     .feature { background: linear-gradient(180deg, #ffffff10, #ffffff08); border:1px solid #ffffff18; border-radius: 16px; padding: 1rem; }
     .feature h4 { margin:.2rem 0 .4rem; }
 
+    /* --- CMPUT 256 Game AI assignment showcase --- */
+    .cmput-shell {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(1.35rem, 3vw, 2.5rem);
+      border: 1px solid #65e7ff4d;
+      border-radius: 30px;
+      background:
+        radial-gradient(720px 460px at 92% 4%, #08b9e12b, transparent 64%),
+        radial-gradient(520px 400px at 3% 100%, #a4ff3b12, transparent 70%),
+        linear-gradient(145deg, #101923, #0b1018 62%);
+      box-shadow: 0 34px 90px -58px #00c9ff;
+      isolation: isolate;
+    }
+    .cmput-shell::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background-image:
+        linear-gradient(#65e7ff08 1px, transparent 1px),
+        linear-gradient(90deg, #65e7ff08 1px, transparent 1px);
+      background-size: 34px 34px;
+      -webkit-mask-image: linear-gradient(120deg, black, transparent 64%);
+      mask-image: linear-gradient(120deg, black, transparent 64%);
+      pointer-events: none;
+    }
+    .cmput-shell::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 360px;
+      height: 360px;
+      right: -235px;
+      bottom: -220px;
+      border: 1px solid #65e7ff1f;
+      border-radius: 50%;
+      box-shadow: 0 0 0 44px #65e7ff07, 0 0 0 88px #65e7ff04;
+      pointer-events: none;
+    }
+    .cmput-intro {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr);
+      align-items: center;
+      gap: clamp(2rem, 5vw, 4rem);
+    }
+    .cmput-eyebrow { color:#9eeeff; }
+    .cmput-eyebrow::before { background:linear-gradient(90deg, #65e7ff, transparent); }
+    .cmput-copy h2 {
+      margin: 0;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: .9;
+      letter-spacing: -.07em;
+    }
+    .cmput-copy h2 span {
+      display: block;
+      margin-top: .75rem;
+      color: #a9ff50;
+      font-size: .25em;
+      line-height: 1.15;
+      letter-spacing: .065em;
+      text-transform: uppercase;
+    }
+    .cmput-lede {
+      max-width: 58ch;
+      margin: 1.35rem 0 1.5rem;
+      color: #d0dbe0;
+      font-size: 1.03rem;
+    }
+    .cmput-shell .project-facts .pill {
+      color:#dbf9ff;
+      border-color:#65e7ff38;
+      background:#08b9e114;
+    }
+    .cmput-actions { display:flex; gap:.7rem; flex-wrap:wrap; }
+    .btn.cmput-primary {
+      color:#071015;
+      background:linear-gradient(135deg, #a9ff50, #58d9f7);
+      border-color:transparent;
+      box-shadow:0 12px 34px -18px #65e7ff;
+      font-weight:800;
+    }
+    .ai-monitor {
+      position: relative;
+      min-height: 515px;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid #65e7ff35;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 50% 42%, #0e63815c, transparent 48%),
+        #050910;
+      box-shadow: 0 30px 70px -40px #000, inset 0 0 54px #041016;
+    }
+    .ai-monitor-bar {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .7rem .85rem;
+      border-bottom: 1px solid #65e7ff24;
+      background: #09121bdd;
+      color: #9cb6c1;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .75rem;
+      letter-spacing: .08em;
+    }
+    .ai-monitor-lights { display:flex; gap:.35rem; }
+    .ai-monitor-lights span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background:#65e7ff;
+      box-shadow:0 0 10px #65e7ff;
+    }
+    .ai-monitor-lights span:nth-child(2) { background:#a9ff50; box-shadow:0 0 10px #a9ff50; }
+    .ai-monitor-lights span:nth-child(3) { background:#ffd84d; box-shadow:0 0 10px #ffd84d; }
+    .ai-monitor-body {
+      position: absolute;
+      inset: 43px 0 0;
+      display: grid;
+      place-items: center;
+      padding: 2rem 2rem 6.9rem;
+    }
+    .ai-reference-wrap {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: min(69%, 300px);
+      padding: 1rem;
+      border: 1px solid #65e7ff2e;
+      border-radius: 18px;
+      background:#031019;
+      box-shadow:0 0 70px #10c8ee24;
+    }
+    .ai-reference-wrap::before,
+    .ai-reference-wrap::after {
+      content:"";
+      position:absolute;
+      width:28px;
+      height:28px;
+      border-color:#a9ff50;
+      opacity:.72;
+    }
+    .ai-reference-wrap::before { inset:-7px auto auto -7px; border-top:2px solid; border-left:2px solid; }
+    .ai-reference-wrap::after { inset:auto -7px -7px auto; border-right:2px solid; border-bottom:2px solid; }
+    .ai-reference-wrap img {
+      width:100%;
+      aspect-ratio:1;
+      object-fit:cover;
+      image-rendering:pixelated;
+    }
+    .ai-reference-wrap figcaption {
+      position:absolute;
+      top:calc(100% + .65rem);
+      width:max-content;
+      max-width:260px;
+      color:#83a0ac;
+      font-size:.75rem;
+      text-align:center;
+    }
+    .ai-monitor-hud {
+      position:absolute;
+      z-index:4;
+      right:.8rem;
+      bottom:.8rem;
+      left:.8rem;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:.5rem;
+    }
+    .ai-hud-card {
+      padding:.62rem .68rem;
+      border:1px solid #65e7ff25;
+      border-radius:11px;
+      background:#09131de8;
+      backdrop-filter:blur(8px);
+    }
+    .ai-hud-label {
+      display:block;
+      color:#6e8b98;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size:.68rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .ai-hud-value {
+      display:block;
+      margin-top:.18rem;
+      color:#dffbff;
+      font-size:.88rem;
+      font-weight:800;
+    }
+    .ai-series-head {
+      display:grid;
+      grid-template-columns:minmax(0, .8fr) minmax(0, 1.2fr);
+      gap:2rem;
+      align-items:end;
+      margin-top:2.75rem;
+      padding-top:2.25rem;
+      border-top:1px solid #65e7ff20;
+    }
+    .ai-series-head h3 {
+      margin:0;
+      font-size:clamp(1.55rem, 3.3vw, 2.35rem);
+      letter-spacing:-.04em;
+    }
+    .ai-series-head p { margin:0; color:#9eb0b9; }
+    .ai-assignment-grid {
+      display:grid;
+      grid-template-columns:repeat(6, minmax(0, 1fr));
+      gap:.8rem;
+      margin-top:1.35rem;
+    }
+    .ai-assignment {
+      position:relative;
+      grid-column:span 2;
+      min-height:255px;
+      padding:1.15rem;
+      overflow:hidden;
+      border:1px solid #65e7ff20;
+      border-radius:17px;
+      background:linear-gradient(160deg, #ffffff0b, #ffffff04);
+      transition:transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .ai-assignment:nth-child(n+4) { grid-column:span 3; }
+    .ai-assignment:hover {
+      transform:translateY(-3px);
+      border-color:#65e7ff4a;
+      background:linear-gradient(160deg, #65e7ff10, #ffffff05);
+    }
+    .ai-assignment::after {
+      content:"";
+      position:absolute;
+      width:110px;
+      height:110px;
+      right:-72px;
+      bottom:-74px;
+      border:1px solid #65e7ff1b;
+      border-radius:50%;
+      box-shadow:0 0 0 20px #65e7ff05;
+    }
+    .ai-assignment-number {
+      color:#a9ff50;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.1em;
+    }
+    .ai-assignment h4 {
+      margin:.75rem 0 .5rem;
+      color:#eefcff;
+      font-size:1.15rem;
+      letter-spacing:-.02em;
+    }
+    .ai-assignment p { margin:0; color:#a9b9c0; font-size:1rem; }
+    .ai-assignment-tech {
+      display:inline-flex;
+      margin-top:1rem;
+      color:#7ddff2;
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+    .ai-summary {
+      display:grid;
+      grid-template-columns:minmax(0, .76fr) minmax(0, 1.24fr);
+      gap:2rem;
+      align-items:start;
+      margin-top:2rem;
+      padding-top:2rem;
+      border-top:1px solid #65e7ff20;
+    }
+    .ai-summary h3 { margin:0 0 .5rem; font-size:1.35rem; }
+    .ai-summary p { margin:0; color:#9eb0b9; }
+    .cmput-shell .tag { border-color:#65e7ff28; background:#08b9e10d; }
+
     /* --- Haboob Android case study --- */
     .haboob-shell {
       position: relative;
@@ -519,6 +798,13 @@
 
     /* --- Responsive tweaks --- */
     @media (max-width: 900px) {
+      .cmput-intro { grid-template-columns:1fr; }
+      .cmput-copy { max-width:650px; }
+      .ai-monitor { width:min(100%, 620px); margin:0 auto; }
+      .ai-series-head, .ai-summary { grid-template-columns:1fr; gap:1rem; }
+      .ai-assignment-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+      .ai-assignment, .ai-assignment:nth-child(n+4) { grid-column:auto; }
+      .ai-assignment:last-child { grid-column:1 / -1; }
       .haboob-intro { grid-template-columns:1fr; }
       .haboob-copy { max-width: 650px; }
       .phone-stage { width:min(100%, 570px); margin:0 auto; }
@@ -535,7 +821,15 @@
       nav { width:100%; justify-content:flex-start; overflow-x:auto; flex-wrap:nowrap; padding-bottom:.2rem; }
       nav a { white-space:nowrap; }
       section { padding: 3rem 0; }
-      .haboob-shell, .wildfire-shell { border-radius:22px; }
+      .cmput-shell, .haboob-shell, .wildfire-shell { border-radius:22px; }
+      .ai-monitor { min-height:470px; }
+      .ai-monitor-body { padding:1.4rem 1.4rem 7.4rem; }
+      .ai-reference-wrap { width:min(72%, 250px); }
+      .ai-monitor-hud { grid-template-columns:1fr; }
+      .ai-hud-card { display:flex; align-items:center; justify-content:space-between; gap:.5rem; }
+      .ai-hud-value { margin-top:0; }
+      .ai-assignment-grid { grid-template-columns:1fr; }
+      .ai-assignment, .ai-assignment:last-child { grid-column:auto; min-height:0; }
       .phone-stage { min-height:500px; }
       .phone-shot.main { width:220px; }
       .phone-shot.create { width:165px; top:110px; left:-20px; }
@@ -635,10 +929,11 @@
       </div>
       <nav>
         <a href="#bio">Bio</a>
+        <a href="#game-ai">Game AI</a>
+        <a href="#wildfire">Wildfire App</a>
         <a href="#haboob">Haboob</a>
         <a href="#games">Games</a>
         <a href="#skills">Skills</a>
-        <a href="#wildfire">Wildfire App</a>
         <a href="#contact">Contact</a>
         <a 
           href="https://dtyrrelldev.github.io/edsonRadioTester/" 
@@ -693,6 +988,143 @@
 
     </div>
   </section>
+
+    <!-- CMPUT 256 GAME AI SHOWCASE -->
+    <section id="game-ai">
+      <div class="container">
+        <article class="cmput-shell reveal">
+          <div class="cmput-intro">
+            <div class="cmput-copy">
+              <div class="eyebrow cmput-eyebrow">CMPUT 256 · Winter 2026</div>
+              <h2>Game AI<span>Assignment highlights</span></h2>
+              <p class="cmput-lede">
+                Five Unity assignments that move from representing navigable space to making
+                agents search, react, learn from player data, and generate new game levels.
+                Each project adds a different layer to an evolving Pac-Man-inspired AI testbed.
+              </p>
+
+              <div class="project-facts" role="list" aria-label="CMPUT 256 coursework details">
+                <span class="pill" role="listitem">5 assignments</span>
+                <span class="pill" role="listitem">Unity + C#</span>
+                <span class="pill" role="listitem">Game AI</span>
+              </div>
+
+              <div class="cmput-actions">
+                <a class="btn cmput-primary" href="#ai-assignments">Explore the assignments ↓</a>
+              </div>
+            </div>
+
+            <figure class="ai-monitor" aria-label="CMPUT 256 Game AI course testbed">
+              <div class="ai-monitor-bar">
+                <span>AGENT LAB // UNITY</span>
+                <span class="ai-monitor-lights" aria-hidden="true"><span></span><span></span><span></span></span>
+              </div>
+              <div class="ai-monitor-body">
+                <div class="ai-reference-wrap">
+                  <img src="assets/cmput256/pacman-reference.png" alt="Pac-Man maze reference used in the CMPUT 256 Unity project" loading="lazy" />
+                  <figcaption>Course reference maze · shared AI testbed</figcaption>
+                </div>
+              </div>
+              <div class="ai-monitor-hud" aria-hidden="true">
+                <div class="ai-hud-card">
+                  <span class="ai-hud-label">Pathfinding</span>
+                  <span class="ai-hud-value">A* search</span>
+                </div>
+                <div class="ai-hud-card">
+                  <span class="ai-hud-label">Behaviour</span>
+                  <span class="ai-hud-value">State machines</span>
+                </div>
+                <div class="ai-hud-card">
+                  <span class="ai-hud-label">Generation</span>
+                  <span class="ai-hud-value">Markov chains</span>
+                </div>
+              </div>
+            </figure>
+          </div>
+
+          <div class="ai-series-head">
+            <div>
+              <div class="eyebrow cmput-eyebrow">Course progression</div>
+              <h3>From navigation to generation</h3>
+            </div>
+            <p>
+              The sequence starts with the foundations agents need to move through a world,
+              then builds toward authored behaviour, player modelling, and procedural content.
+            </p>
+          </div>
+
+          <div class="ai-assignment-grid" id="ai-assignments">
+            <article class="ai-assignment">
+              <span class="ai-assignment-number">ASSIGNMENT 01</span>
+              <h4>Spatial grids &amp; greedy routing</h4>
+              <p>
+                Generated a graph of valid grid cells around polygonal obstacles, connected
+                neighbouring nodes, and guided an agent with a goal-directed greedy search.
+              </p>
+              <span class="ai-assignment-tech">Graph modelling · collision geometry</span>
+            </article>
+
+            <article class="ai-assignment">
+              <span class="ai-assignment-number">ASSIGNMENT 02</span>
+              <h4>A* pathfinding</h4>
+              <p>
+                Implemented A* with an open priority queue, closed-set tracking, path
+                reconstruction, and a Manhattan-distance heuristic for efficient routing.
+              </p>
+              <span class="ai-assignment-tech">Heuristic search · priority queues</span>
+            </article>
+
+            <article class="ai-assignment">
+              <span class="ai-assignment-number">ASSIGNMENT 03</span>
+              <h4>Finite-state ghost behaviour</h4>
+              <p>
+                Built distinct ghost behaviours and a custom agent that shifts between chasing,
+                guarding pellets, and retreating in response to Pac-Man and power-pellet events.
+              </p>
+              <span class="ai-assignment-tech">State machines · reactive agents</span>
+            </article>
+
+            <article class="ai-assignment">
+              <span class="ai-assignment-number">ASSIGNMENT 04</span>
+              <h4>Player modelling with K-means</h4>
+              <p>
+                Clustered synthetic player telemetry with normalized feature distances and
+                converging centroids, then extended the model with nearest-neighbour churn prediction.
+              </p>
+              <span class="ai-assignment-tech">K-means · feature normalization · KNN</span>
+            </article>
+
+            <article class="ai-assignment">
+              <span class="ai-assignment-number">ASSIGNMENT 05</span>
+              <h4>Markov-chain level generation</h4>
+              <p>
+                Trained conditional tile probabilities from twenty example levels and engineered
+                local and positional state features to generate new layouts in the learned style.
+              </p>
+              <span class="ai-assignment-tech">PCGML · probability · tile generation</span>
+            </article>
+          </div>
+
+          <div class="ai-summary">
+            <div>
+              <div class="eyebrow cmput-eyebrow">Across the series</div>
+              <h3>Algorithms connected to playable behaviour</h3>
+              <p>Each concept was implemented in C# and exercised inside a working Unity scene.</p>
+            </div>
+            <div class="taglist" role="list" aria-label="CMPUT 256 skills and technologies">
+              <span class="tag" role="listitem">Unity</span>
+              <span class="tag" role="listitem">C#</span>
+              <span class="tag" role="listitem">Graph search</span>
+              <span class="tag" role="listitem">A*</span>
+              <span class="tag" role="listitem">Finite-state machines</span>
+              <span class="tag" role="listitem">K-means clustering</span>
+              <span class="tag" role="listitem">Churn prediction</span>
+              <span class="tag" role="listitem">Procedural generation</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
 
     <!-- WILDFIRE APP SHOWCASE -->
     <section id="wildfire">
