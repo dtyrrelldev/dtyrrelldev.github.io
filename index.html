@@ -25,12 +25,7 @@
       --card: #17181cdd;
     }
     * { box-sizing: border-box; }
-    html {
-      height: 100%;
-      scroll-behavior: smooth;
-      scroll-padding-top: 7rem;
-    }
-    body { height: 100%; }
+    html, body { height: 100%; }
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -204,14 +199,6 @@
       border-color:#65e7ff38;
       background:#08b9e114;
     }
-    .cmput-actions { display:flex; gap:.7rem; flex-wrap:wrap; }
-    .btn.cmput-primary {
-      color:#071015;
-      background:linear-gradient(135deg, #a9ff50, #58d9f7);
-      border-color:transparent;
-      box-shadow:0 12px 34px -18px #65e7ff;
-      font-weight:800;
-    }
     .ai-monitor {
       position: relative;
       min-height: 515px;
@@ -332,7 +319,6 @@
       margin-top:2.75rem;
       padding-top:2.25rem;
       border-top:1px solid #65e7ff20;
-      scroll-margin-top:7rem;
     }
     .ai-series-head h3 {
       margin:0;
@@ -850,7 +836,6 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior:auto; }
       .spark { display:none; }
       .reveal { opacity:1; transform:none; transition:none; }
     }
@@ -1016,9 +1001,6 @@
                 <span class="pill" role="listitem">Game AI</span>
               </div>
 
-              <div class="cmput-actions">
-                <a class="btn cmput-primary" href="#ai-series">Explore the assignments ↓</a>
-              </div>
             </div>
 
             <figure class="ai-monitor" aria-label="CMPUT 256 Game AI course testbed">
@@ -1049,7 +1031,7 @@
             </figure>
           </div>
 
-          <div class="ai-series-head" id="ai-series">
+          <div class="ai-series-head">
             <div>
               <div class="eyebrow cmput-eyebrow">Course progression</div>
               <h3>From navigation to generation</h3>
@@ -1060,7 +1042,7 @@
             </p>
           </div>
 
-          <div class="ai-assignment-grid" id="ai-assignments">
+          <div class="ai-assignment-grid">
             <article class="ai-assignment">
               <span class="ai-assignment-number">ASSIGNMENT 01</span>
               <h4>Spatial grids &amp; greedy routing</h4>
